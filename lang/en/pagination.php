@@ -12,6 +12,7 @@ return [
     | you want to customize your views to better match your application.
     |
     */
+    // &l|u|r|dArr; - nyíl html tag
 
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',

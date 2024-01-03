@@ -1,0 +1,72 @@
+@import 'bootstrap.css';
+
+.customnoactive {
+    border-width: 0;
+}
+
+/*bootstrap*/
+/*navbar*/
+.collapsing#admin-nav{
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    visibility: visible;
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+.collapsing#user-nav{
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    visibility: visible;
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+@media (max-width: 768px) {
+    .btn-group .btn {
+      font-size:0.6rem;
+      padding:0.2rem 0.6rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .btn-group .btn {
+      font-size:0.9rem;
+      padding:0.3rem 1rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .btn-group .btn {
+      font-size: 1.2rem;
+      padding:0.4rem 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .btn-group .btn {
+      padding:0.5rem 2rem;
+      font-size:1.5rem;
+    }
+  }
+
+
+/* validate-pristine and forms*/
+.pristine-message{
+    height: 1.5rem;
+}
+.pristine-error{
+    color: rgb(201, 32, 32);
+    font-size: 1rem;
+}
+.pristine-form{
+  width: 100%;
+}
+
+/* Tooltip */
+.tooltip-danger > .tooltip-inner {
+  background-color: rgb(201, 32, 32);
+}
+.tooltip-info > .tooltip-inner {
+  background-color: var(--bs-info-bg-subtle);
+  color: var(--bs-first);
+}

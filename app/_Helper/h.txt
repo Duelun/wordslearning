@@ -1,0 +1,93 @@
+.env    - alapbeállítások környezetre
+config/app.php  - app beállításai, ha null akkor .env-t használja
+Http/Kernel.php     - middlewarek beállításai
+        - behívási szabályok
+                - mindig
+                - x kérésnél, csoportban
+        - middleware aliasok
+Providers/RouteServiceProvider.php
+        - rout aliasai
+        - ráfűzi a middleware szabályt a routokra
+
+Kérés ->
+routes/...php   - továbbítja a kérést -> view/controllers stb
+
+...
+
+
+views/components/...php meghívható a <x-name metódussal
+        a meghívásakor a <x-slot::name vagy <x-slot name='name' átdob kódrészletet, amire {{ name }} hivatkozik és egybefűzve dobja vissza
+        @props deklarálja a {{ name }} változókat kezdőértékkel is
+
+(any).blade.php -> (layot).blade.php
+        <x-name(blade.php)> átugrik a másik bladera a {{ name(variable) }} átküldésével, ahol {{ slot }} hivatkozik rá
+        ezen belül a <x-slot:title> átküldi stringet amire {{ title }} hivatkozik
+        @extends('layouts.app') meghat a layot page
+        @section('sidebar') tartalmat küld a @section-@show szakasznak vagy beszurható a @yield('content', 'default') paranccsal
+@csrf
+@method('PUT')
+@error('title') - @enderror
+@push('scripts') <script src="/example.js"></script> @endpush | @prepend('scripts') ...
+x.blade.php @fragment('name') - @endfragment behívható mashol a view('x', [változók])->fragments(['name'(, 'name2')])
+
+
+
+    </head>
+    <body class="position-relative w-100 min-vh-100 bg-light "
+        {{ Session::has('notification') ? 'data-notification' : '' }}>
+        {{ Session::get('errors', 'none') }};
+<script defer>
+    (function(){
+        if ( ! document.body.dataset.notification)
+            return false;
+        alert(document.body.dataset.notificationType);
+    });
+</script>
+    <!--
+        data-notification-type='{{ Session::get('alert_type', 'info') }}' 
+        data-notification-message='{{ json_encode(Session::get('message')) }}'>
+            
+    -->
+<!--
+        (function(){
+            // Don't go any further down the script if [data-notification] is not set.
+            if ( ! document.body.dataset.notification)
+                return false;
+        
+            var type = document.body.dataset.notificationType;
+            switch(type){
+                case 'info':
+                    toastr.info(JSON.parse(document.body.dataset.notificationMessage));
+                    break;
+        
+                case 'warning':
+                    toastr.warning(JSON.parse(document.body.dataset.notificationMessage));
+                    break;
+        
+                case 'success':
+                    toastr.success(JSON.parse(document.body.dataset.notificationMessage));
+                    break;
+        
+                case 'error':
+                    toastr.error(JSON.parse(document.body.dataset.notificationMessage));
+                    break;
+            }
+        })();
+    -->
+<!--
+        You can shorten your JS by doing this:
+        
+        (function(){
+            // Don't go any further down the script if [data-notification] is not set.
+            if ( ! document.body.dataset.notification)
+                return false;
+        
+            var type = document.body.dataset.notificationType;
+            var types = ['info', 'warning', 'success', 'error'];
+        
+            // Check if `type` is in our `types` array, otherwise default to info.
+            toastr[types.indexOf(type) !== -1 ? type : 'info'](JSON.parse(document.body.dataset.notificationMessage));
+        
+            // toastr['info']('message') is the same as toastr.info('message')
+        })();
+    -->

@@ -13,6 +13,7 @@ return [
     |
     */
 
+
     'accepted' => 'The :attribute field must be accepted.',
     'accepted_if' => 'The :attribute field must be accepted when :other is :value.',
     'active_url' => 'The :attribute field must be a valid URL.',
@@ -170,11 +171,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'password_confirmation' => [
+            'same' => 'Password not mach!',
+        ],
+        'agree' => [
+            'required_with' => 'Must be accepted',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

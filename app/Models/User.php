@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'birthyear',
+        'webstyle',
+        'weblang',
+        'openpage',
+        'statonpage',
+        'fullpagelearn',
     ];
 
     /**
