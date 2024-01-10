@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\WebpageSetController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\SetDictionariesController;
 
 
 Route::middleware('auth')->group(function () {
@@ -18,16 +20,19 @@ Route::middleware('auth')->group(function () {
     Route::get('usersettings', [UserDashboardController::class, 'settings'])
         ->name('usersettings');
 
-    Route::get('userhelp', [UserDashboardController::class, 'help'])
-        ->name('userhelp');
+    Route::post('userdocuments', [UserDashboardController::class, 'documents'])
+        ->name('userdocuments');
 
     //User dashboard pages
     //Settings
-    Route::post('userpersonal', [RegisterController::class, 'changeUserData'])
+    Route::post('userpersonal', [RegisterController::class, 'change'])
         ->name('userpersonal');
 
     Route::post('webpageset', [WebpageSetController::class, 'change'])
         ->name('webpageset');
+    //Dictionaries
+    Route::post('dictlist', [SetDictionariesController::class, 'dictlist'])
+        ->name('dictlist');
 
     //Admin dashboard
     Route::get('adminsettings', [AdminDashboardController::class, 'settings'])

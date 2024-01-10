@@ -22,17 +22,18 @@ return new class extends Migration
             $table->timestamps();
             /*other pesonal */
             $table->unsignedMediumInteger('birthyear')->nullable();
-            $table->unsignedSmallInteger('ownlang')->nullable();
+            $table->string('ownlang', 3)->default('--');
+            $table->string('learnedlang', 3)->default('--');
 
             /*webpage */
             $table->string('webstyle')->default('default');
-            $table->string('weblang')->default('en');
+            $table->string('weblang', 3)->default('en');
             $table->set('openpage', ['Learning', 'Dictionaries', 'Settings', 'Help'])->default('Learning');
             $table->boolean('statonpage')->default(false);
             $table->boolean('fullpagelearn')->default(false);
 
             /*learning*/
-            
+
 
         });
     }

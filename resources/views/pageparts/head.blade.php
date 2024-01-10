@@ -20,7 +20,7 @@
         </div>
         <!-- Languages -->
         <div class=" position-relative me-3" style="height:3.5rem; width:3.5rem">
-            <div class=" position-absolute btn d-inline-block border-0"
+            <div id="langflagactual" class=" position-absolute btn d-inline-block border-0"
                 style="background-image:url(pictures/flags/{{ session('currentflag', 'gb') }}.png); background-size:100% auto; background-position:center; background-repeat:no-repeat;
                     height:3.5rem; width:3.5rem"
                 data-bs-toggle="collapse" href="#collapseflag">

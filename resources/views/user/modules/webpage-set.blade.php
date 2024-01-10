@@ -80,7 +80,7 @@
                 <x-input-label class="" for="biglearnbox" :value="__('Full page learning')" />
             </div>
             <?php
-                if (session()->has('fullpagelearn') && session('fullpagelern'))  { $checked = 'checked'; } else { $checked = ''; }
+                if (session()->has('fullpagelearn') && session('fullpagelearn'))  { $checked = 'checked'; } else { $checked = ''; }
             ?>
             <div class=" d-inline-block flex-grow-0 flex-shrink-0 d-flex justify-content-end" style="width: 8rem">
                 <x-slide-tick :id='"biglearnbox"'  :checked='$checked' />

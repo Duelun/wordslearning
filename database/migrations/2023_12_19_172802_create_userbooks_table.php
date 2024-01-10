@@ -16,10 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user');
                 $table->foreign('user')->references('id')->on('users');
             $table->string('name', 20);
-            $table->unsignedBigInteger('langforeign');
-                $table->foreign('langforeign')->references('id')->on('countries');
-            $table->unsignedBigInteger('langown');
-                $table->foreign('langown')->references('id')->on('countries');
+            $table->string('langforeign', 3);
+            $table->string('langown', 3);
             $table->timestamps();
         });
     }

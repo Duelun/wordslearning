@@ -10,7 +10,7 @@
             form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 param = {method:'post', body: new FormData(form)};
-                startFetch(form, formid);
+                startFetch(formid);
                 sendFormFetch(form, formid, param);
             });
         };
@@ -56,14 +56,14 @@
                 })
                 .then((Data) => { handleResponse(form, formid, Data)})
                 .catch((error) => {
-                    handleError(form, formid, errors);
+                    handleError(form, formid, error);
                     console.error("Failed to read data");
                 });
         };
     };
 
 
-    function startFetch(form, formid){
+    function startFetch(formid){
         const messid = formid+'message';
         const messagebox = document.getElementById(messid);
         var classes = messagebox.classList;
@@ -85,8 +85,6 @@
             classes.remove('d-inline-box');
             classes.add('d-none');
         }
-        
-
     };
 
     function endFetch(form, formid){
@@ -104,7 +102,9 @@
     function handleResponse(form, formid, data){
         const messid = formid+'message';
         const messagebox = document.getElementById(messid);
+
         messagebox.innerHTML = data.custommessage;
+console.log(data);
         if (Object.keys(data.errormessage).length > 0){
             for (const [key, value] of Object.entries(data.errormessage)) {
                 const fieldname = formid + '_' + key + '_error';
@@ -116,12 +116,22 @@
                 errorbox.innerHTML = Object.values(value)[0];
                     const tooltipobj = document.getElementById(fieldname+'_tooltip');
                     const tooltip = bootstrap.Tooltip.getInstance(tooltipobj);
-                    tooltip.setContent({ '.tooltip-inner': errortext});                    
+                    tooltip.setContent({ '.tooltip-inner': errortext});
                     const tooltipbutton = document.getElementById(fieldname+'_tooltipbutton');
                     tooltipbutton.classList.remove('d-none');
                     tooltipbutton.classList.add('d-inline-block');
             }
         }
+
+        if (Object.keys(data.customblock).length > 0){
+            if (data.customblock.refreshpage) {
+                window.location.reload();
+            }
+            if (data.customblock.insertNewDict) {
+                insertNewDict(data.customblock);
+            }
+        }
+
         endFetch(form, formid);
     };
 
@@ -134,6 +144,5 @@
         messagebox.innerHTML = 'Server error, try it later!';
         endFetch(form, formid);
     };
-
 
 </script>

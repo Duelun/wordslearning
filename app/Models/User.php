@@ -24,6 +24,8 @@ class User extends Authenticatable
         'role',
         'birthyear',
         'webstyle',
+        'ownlang',
+        'learnedlang',
         'weblang',
         'openpage',
         'statonpage',

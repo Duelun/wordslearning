@@ -11,12 +11,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -73,11 +70,6 @@ class RegisterController extends Controller
 
             foreach ($array as $key => $value){
                 $request->user()->update( [$key => $value, ]);
-                /*
-                DB::table('users')
-                    ->where('id', $request->user()->id)
-                    ->update([$key => $value]);
-                */
             }
             $custommessage = $errorno;
         }

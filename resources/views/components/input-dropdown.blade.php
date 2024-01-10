@@ -1,6 +1,6 @@
 @props([
     'value' => '',
-    'datas' => ' ',
+    'datas' => [' '],
     'width' => '8',
     'active' => ''
     ])
@@ -10,7 +10,7 @@
         @foreach ($datas as $data)
             <option value="{{ $data }}"
                 @if ($data == $active) {{ 'selected' }} @endif>
-                {{ $data }}
+                {{ __($data) }}
             </option>
         @endforeach
     @else
