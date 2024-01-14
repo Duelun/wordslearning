@@ -6,6 +6,8 @@ The website offer a word learning app. The base engine is the usually show-write
 At this time done:
  - Open page.
  - Login, register, change, forgott password system.
+ - Authorization.
+ - Validation. Prepared for planned features.
  - Localization. At this time with 3 languages.
  - Partial translation.
  - Color shema prepared.
@@ -17,6 +19,7 @@ At this time done:
     - Words (pair) create new, modify exist, delete, move between dictionaries.
  - Database prepare for the planned features.
  - Working Fetch function and prepared for the planned features.
+ - Mostly responsive design.
 
 Task in the future:
  - User learning are.
@@ -26,6 +29,7 @@ Task in the future:
  - Admin area finish.
  - Translation finish.
  - Color shemas finish.
+ - Written content finish.
  - Proper skin, pictures, formating.
 
 Unfortunately, the visual design is not my strong side, so the skin is not the most beautiful. But I work on it... and hope :)
