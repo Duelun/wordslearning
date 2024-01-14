@@ -6,4 +6,6 @@ The website offer a word learning app. The base engine is the usually show-write
 At this time done:
     - Login, register area.
     - Admin area prepared.
+    - User setting are.
+    - Documentum area.
     - 
