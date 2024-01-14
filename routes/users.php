@@ -6,6 +6,7 @@ use App\Http\Controllers\User\WebpageSetController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\SetDictionariesController;
+use App\Http\Controllers\User\SetWordsController;
 
 
 Route::middleware('auth')->group(function () {
@@ -33,6 +34,27 @@ Route::middleware('auth')->group(function () {
     //Dictionaries
     Route::post('dictlist', [SetDictionariesController::class, 'dictlist'])
         ->name('dictlist');
+
+    Route::post('dictlistdelete', [SetDictionariesController::class, 'delete'])
+        ->name('dictlistdelete');
+
+    Route::post('dictlistmodify', [SetDictionariesController::class, 'modify'])
+        ->name('dictlistmodify');
+
+    Route::post('dictlistsave', [SetDictionariesController::class, 'save'])
+        ->name('dictlistsave');
+    //Words
+    Route::post('wordlist', [SetWordsController::class, 'wordlist'])
+        ->name('wordlist');
+
+    Route::post('wordlistdelete', [SetWordsController::class, 'delete'])
+        ->name('wordlistdelete');
+
+    Route::post('wordlistmodify', [SetWordsController::class, 'modify'])
+        ->name('wordlistmodify');
+
+    Route::post('wordlistsave', [SetWordsController::class, 'save'])
+        ->name('wordlistsave');
 
     //Admin dashboard
     Route::get('adminsettings', [AdminDashboardController::class, 'settings'])

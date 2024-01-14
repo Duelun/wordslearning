@@ -27,8 +27,8 @@ class wordclasses extends Seeder
 
         foreach($array as $records){
             DB::table('wordclasses')->insert([
-                'wordclasse' => 'a',
-                'shortform' => 'b',
+                'wordclasse' => $records['a'],
+                'shortform' => $records['b'],
             ]);
         }
     }

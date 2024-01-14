@@ -4,17 +4,21 @@
         for (const forms of allforms) {
             const formid = forms.getAttribute('id');
 
-            if (formid == 'logoutform') { continue; }
+            if (formid === 'logoutform') { continue; }
 
             const form = document.getElementById(formid);
             form.addEventListener("submit", function (e) {
-                e.preventDefault();
-                param = {method:'post', body: new FormData(form)};
-                startFetch(formid);
-                sendFormFetch(form, formid, param);
+                prepare(e, form, formid);
             });
-        };
+        }
     });
+
+    function prepare(e, form, formid){
+        e.preventDefault();
+        const param = {method:'post', body: new FormData(form)};
+        startFetch(formid);
+        sendFormFetch(form, formid, param);
+    }
 
     function sendFormFetch(form, formid, param) {
         // Detect if user is on IE browser
@@ -104,31 +108,43 @@
         const messagebox = document.getElementById(messid);
 
         messagebox.innerHTML = data.custommessage;
-console.log(data);
+
+        //with error
         if (Object.keys(data.errormessage).length > 0){
+            var errortext = '';
             for (const [key, value] of Object.entries(data.errormessage)) {
-                const fieldname = formid + '_' + key + '_error';
+                const fieldkey = 'bagged';
+                if (!data.customblock.baggedError){
+                    const fieldkey = key;
+                    var errortext = '';
+                }
+                const fieldname = formid + '_' + fieldkey + '_error';
                 const errorbox = document.getElementById(fieldname);
-                var errortext = '';
                 for (const erroritem of Object.values(value)){
                     errortext += '- '+erroritem+'<br>';
                 }
-                errorbox.innerHTML = Object.values(value)[0];
-                    const tooltipobj = document.getElementById(fieldname+'_tooltip');
-                    const tooltip = bootstrap.Tooltip.getInstance(tooltipobj);
-                    tooltip.setContent({ '.tooltip-inner': errortext});
-                    const tooltipbutton = document.getElementById(fieldname+'_tooltipbutton');
-                    tooltipbutton.classList.remove('d-none');
-                    tooltipbutton.classList.add('d-inline-block');
+                if (!data.customblock.baggedError || errorbox.innerHTML === ''){
+                    errorbox.innerHTML = Object.values(value)[0];
+                }
+                const tooltipobj = document.getElementById(fieldname+'_tooltip');
+                const tooltip = bootstrap.Tooltip.getInstance(tooltipobj);
+                tooltip.setContent({ '.tooltip-inner': errortext});
+                const tooltipbutton = document.getElementById(fieldname+'_tooltipbutton');
+                tooltipbutton.classList.remove('d-none');
+                tooltipbutton.classList.add('d-inline-block');
             }
         }
-
-        if (Object.keys(data.customblock).length > 0){
-            if (data.customblock.refreshpage) {
-                window.location.reload();
-            }
-            if (data.customblock.insertNewDict) {
-                insertNewDict(data.customblock);
+        //without error
+        else {
+            if (Object.keys(data.customblock).length > 0){
+                //change page language
+                if (data.customblock.refreshpage) {
+                    window.location.reload();
+                }
+                //dictionaries list changed
+                if (data.customblock.dictlist) {
+                    serverResponse(data.customblock);
+                }
             }
         }
 
@@ -137,8 +153,7 @@ console.log(data);
 
     function handleError(form, formid, errors){
         console.log(form);
-        console.log('error');
-
+        console.log(errors);
         const messid = formid+'message';
         const messagebox = document.getElementById(messid);
         messagebox.innerHTML = 'Server error, try it later!';

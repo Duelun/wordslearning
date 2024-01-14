@@ -1,13 +1,14 @@
 @props([
-    'id' => '3',
+    'id' => 'x',
     'name' => 'x',
     'lang1' => 'x',
     'lang2' => 'x',
-    'number' => '10',
-    'class' => ''
+    'number' => '0',
+    'class' => '',
+    'dataset_parent' => ''
     ])
 
-<div class="d-flex justify-content-between flex-wrap mb-2 {{ $class }}">
+<div class="d-flex justify-content-between flex-wrap mb-2 {{ $class }}" data-parent="{{ $dataset_parent }}">
         <x-input-label class="visually-hidden id" :value="$id" />
     <div class="d-flex flex-wrap align-items-start me-2">
         <div class="d-inline-block p-1" style="width: 14rem; ">

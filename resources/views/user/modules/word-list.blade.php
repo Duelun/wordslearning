@@ -1,6 +1,19 @@
-<div class="my-3 mt-5 ps-2 h4">
-    {{ __('My words') }}
+
+
+<!-- List -->
+<div class="wordList" id="userWordList">
+    <?php foreach (session('userwordlist') as $key => $record){ ?>
+        @include('user.modules.wordlist-line', ['key' => $key, 'record' => $record, 'class' => 'record'])
+    <?php } ?>
 </div>
-<div class="border border-primary-subtle p-2"
-     style="box-shadow: 0rem 0rem 0.5rem 0.3rem var(--bs-secondary); min-height: 10rem; ">
+
+<!-- Button -->
+<div class="d-flex justify-content-end p-2 pe-5">
+    <button type ='button' id="Newwordbutton" class ='btn btn-primary px-4'>
+        <span class=""> {{__('New Word')}} </span>
+    </button>
 </div>
+
+
+<!-- Form -->
+@include('user.modules.wordlist-form', ['route' => 'wordlist', 'id' => 'wordlist'])

@@ -8,18 +8,43 @@
 
 
 <!-- page -->
-<div class="position-relative start-50 translate-middle-x w-75 border border-info m-2 min-vh-100 "
-    style="">
+<div class="d-flex justify-content-center w-100 mb-2 min-vh-100 ">
 
 <!-- content -->
-    <div class="wrapper position-absolute start-50 translate-middle-x w-75 gap-2 my-2 " style=' display:grid'>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 1 / 5; grid-row: 1; min-height: 5rem'>One</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 1 / 4; grid-row: 2; min-height: 10rem'>Two</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 4; grid-row: 2; min-height: 10rem'>Three</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 1; grid-row: 3; min-height: 10rem'>Four</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 2 / 5; grid-row: 3; min-height: 10rem'>Five</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 1 / 4; grid-row: 4; min-height: 10rem'>Six</div>
-        <div class="border border-2 border-danger rounded-3 " style='grid-column: 4; grid-row: 4; min-height: 10rem'>Seven</div>
+    <div class="container text-center w-75 gap-2 my-2 ">
+        <div class="row m-5" style='min-height: 5rem'>
+            <div class="col d-flex justify-content-center align-items-center p-3 border border-0 rounded-3"
+                 style="box-shadow: 0rem 0rem 1rem 0.5rem var(--bs-secondary);">
+                <div> {{ __('start.t01') }}</div></div>
+        </div>
+        <div class="row m-5" style='min-height: 10rem'>
+            <div class="col-8 d-flex justify-content-center align-items-center me-5 p-3 border border-0 rounded-3">
+                <div> {{ __('start.t02') }} </div>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+                <img src="/pictures/start1.png" class="img-fluid" alt="" style="box-shadow: 0rem 0rem 1rem 0.5rem var(--bs-secondary);"></div>
+        </div>
+        <div class="row m-5" style='min-height: 10rem'>
+            <div class="col d-flex justify-content-center align-items-center">
+                <img src="/pictures/start2.jpg" class="img-fluid" alt="" style="box-shadow: 0rem 0rem 1rem 0.5rem var(--bs-secondary);"></div>
+            <div class="col-8 d-flex justify-content-center align-items-center ms-5 p-3 border border-0 rounded-3">
+                <div> {{ __('start.t03') }}</div>
+            </div>
+        </div>
+        <div class="row m-5" style='min-height: 10rem'>
+            <div class="col-8 d-flex justify-content-center align-items-center me-5 p-3 border border-0 rounded-3">
+                <div> {{ __('start.t04') }}</div>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+                <img src="/pictures/start3.jpg" class="img-fluid" alt="" style="box-shadow: 0rem 0rem 1rem 0.5rem var(--bs-secondary);"></div>
+        </div>
+        <div class="row m-5" style='min-height: 10rem'>
+            <div class="col d-flex justify-content-center align-items-center">
+                <img src="/pictures/start4.jpg" class="img-fluid" alt="" style="box-shadow: 0rem 0rem 1rem 0.5rem var(--bs-secondary);"></div>
+            <div class="col-8 d-flex justify-content-center align-items-center ms-5 p-3 border border-0 rounded-3">
+                <div> {{ __('start.t05') }}</div>
+            </div>
+        </div>
     </div>
 </div>
 
